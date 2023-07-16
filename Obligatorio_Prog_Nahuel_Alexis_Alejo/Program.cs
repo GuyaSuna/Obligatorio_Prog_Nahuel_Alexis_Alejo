@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Obligatorio_Prog_Nahuel_Alexis_Alejo.Datos;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configuracion de la conexion a SQLServer
+builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+opciones.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSQL")));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
